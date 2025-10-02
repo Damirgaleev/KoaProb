@@ -1,0 +1,42 @@
+{
+  "name": "testpr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "quickstart": "npm run db:start && sleep 5 && npm run db:seed && npm run dev",
+    "db:start": "docker-compose up -d postgres",
+    "db:stop": "docker-compose down",
+    "db:restart": "docker-compose restart postgres",
+    "db:seed": "ts-node src/seed/seed.ts",
+    "db:reset": "docker-compose down -v && docker-compose up -d postgres && sleep 5 && npm run db:seed",
+    "db:logs": "docker-compose logs -f postgres",
+    "pgadmin": "docker-compose up -d pgadmin"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/bodyparser": "^6.0.0",
+    "@koa/router": "^14.0.0",
+    "@types/koa": "^3.0.0",
+    "@types/koa-router": "^7.4.8",
+    "axios": "^1.12.2",
+    "dotenv": "^17.2.3",
+    "koa": "^3.0.1",
+    "koa-basic-auth": "^4.0.0",
+    "koa-router": "^14.0.0",
+    "pg": "^8.16.3",
+    "typeorm": "^0.3.27"
+  },
+  "devDependencies": {
+    "@types/koa__router": "^12.0.4",
+    "@types/koa-basic-auth": "^2.0.6",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
